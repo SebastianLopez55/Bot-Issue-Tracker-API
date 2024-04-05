@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import openai
+import prompt
 
 # Load environment variables from .env file
 load_dotenv()
@@ -23,14 +24,26 @@ completion = openai.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.",
+            "content": prompt.system_prompt,
         },
         {
             "role": "user",
-            "content": "Compose a poem that explains the concept of recursion in programming.",
+            "content": prompt.user_reports,
         },
     ],
 )
 
 # Print the generated message from the completion
-print("\n", completion.choices[0].message)
+message_content = completion.choices[0].message.content
+
+# Breaking down the message into lines for better readability
+lines = message_content.split("\n")
+
+# Formatting and printing each line with annotations for clarity
+print("\nTicket Summary:\n")
+for line in lines:
+    # Check if the line contains valuable information before printing
+    if line.strip() != "":  # This removes any lines that are just whitespace
+        # Here, you can customize how each line is displayed.
+        # For example, adding "->" before each line item for clarity.
+        print(f"{line}")
