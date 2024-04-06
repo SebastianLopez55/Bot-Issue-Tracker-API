@@ -61,7 +61,7 @@ def create_ticket(user_report):
         # Handle the error case, perhaps log the error, and return an appropriate response
         return {"error": "Failed to process report due to an error: " + report_details}
 
-    heartbeat_info_dict = database_sim.db_instance.get_heartbeat("bot_1")
+    heartbeat_info_dict = database_sim.db_instance.get_heartbeat("bot_id")
 
     # Ticket info
     ticket_id = str(uuid.uuid4())

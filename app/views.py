@@ -1,6 +1,7 @@
 # views.py contains the routes and views for the web application, handling the logic of user requests.
 
 from flask import Blueprint, request, jsonify
+from database_sim import database_sim
 from .api import create_ticket, query_ticket_status, update_ticket_status_api
 
 main_blueprint = Blueprint("main", __name__)
@@ -36,3 +37,9 @@ def update_ticket_status(ticket_id):
         return jsonify({"message": "Ticket status updated successfully."}), 200
     else:
         return jsonify({"message": "Ticket not found."}), 404
+
+
+@main_blueprint.route("/tickets", methods=["GET"])
+def get_all_tickets():
+    tickets = database_sim.db_instance.get_all_tickets()
+    return jsonify([ticket.__dict__ for ticket in tickets]), 200
