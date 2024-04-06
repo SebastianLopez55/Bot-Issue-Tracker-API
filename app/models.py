@@ -25,3 +25,9 @@ class Ticket:
         self.bot_battery_level = bot_battery_level
         self.bot_software_version = bot_software_version
         self.bot_hardware_version = bot_hardware_version
+
+    def update_status(self, new_status):
+        if new_status in ["OPEN", "IN PROGRESS", "CLOSED"]:
+            self.ticket_status = new_status
+        else:
+            raise ValueError("Invalid status")

@@ -1,4 +1,4 @@
-# Handles API-specific logic, managing data processing and responses for API requests.
+# api.py handles API-specific logic, managing data processing and responses for API requests.
 from dotenv import load_dotenv
 from database_sim import database_sim
 from flask import jsonify
@@ -115,3 +115,8 @@ def query_ticket_status(ticket_id):
     else:
         # Ticket not found
         return {"message": "Ticket not in database."}
+
+
+def update_ticket_status_api(ticket_id, new_status):
+    # Call the database method to update the ticket status
+    return database_sim.db_instance.update_ticket_status(ticket_id, new_status)

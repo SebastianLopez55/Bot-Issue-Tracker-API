@@ -20,6 +20,13 @@ class SimulatedDatabase:
     def get_ticket(self, ticket_id):
         return self.tickets.get(ticket_id, "Ticket not in database.")
 
+    def update_ticket_status(self, ticket_id, new_status):
+        ticket = self.get_ticket(ticket_id)
+        if ticket and ticket != "Ticket not in database.":
+            ticket.update_status(new_status)
+            return True
+        return False
+
 
 # Initialize the simulated database instance
 db_instance = SimulatedDatabase()

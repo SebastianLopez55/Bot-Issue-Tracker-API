@@ -1,9 +1,10 @@
-# Contains the routes and views for the web application, handling the logic of user requests.
+# views.py contains the routes and views for the web application, handling the logic of user requests.
 
 from flask import Blueprint, request, jsonify
-from .api import create_ticket, query_ticket_status
+from .api import create_ticket, query_ticket_status, update_ticket_status_api
 
 main_blueprint = Blueprint("main", __name__)
+VALID_STATUS = ["OPEN", "IN PROGRESS", "CLOSED"]
 
 
 @main_blueprint.route("/user_report", methods=["POST"])
@@ -23,3 +24,15 @@ def get_ticket_status(ticket_id):
     else:
         # Successful ticket lookup
         return jsonify(response), 200
+
+
+@main_blueprint.route("/ticket_status/<ticket_id>", methods=["PATCH"])
+def update_ticket_status(ticket_id):
+    data = request.json
+    new_status = data.get("new_status")
+    if not new_status or new_status not in VALID_STATUS:
+        return jsonify({"message": "Valid new status is required."}), 400
+    if update_ticket_status_api(ticket_id, new_status):
+        return jsonify({"message": "Ticket status updated successfully."}), 200
+    else:
+        return jsonify({"message": "Ticket not found."}), 404
