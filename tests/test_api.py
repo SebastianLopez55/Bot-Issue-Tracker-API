@@ -197,9 +197,3 @@ def test_update_ticket_status_nonexistent(client):
 
     assert response.status_code == 404
     assert data["message"] == "Ticket not found."
-
-
-"""
-GET Request test: return all tickets
-
-"""
