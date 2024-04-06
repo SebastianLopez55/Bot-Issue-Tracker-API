@@ -83,6 +83,9 @@ To run this project on your local machine, follow these steps:
     pytest
     ```
 
+
+    
+
 ## API Documentation
 
 This section outlines the available endpoints within the Bot Issue Tracker API, including their purpose and how to interact with them.
