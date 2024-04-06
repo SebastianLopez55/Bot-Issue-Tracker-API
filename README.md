@@ -190,7 +190,7 @@ This section outlines the available endpoints within the Bot Issue Tracker API, 
     ]
     ```
 
-**Note**: The provided `/tickets` endpoint is an experimental feature intended for exploratory or administrative purposes and has not been extensively tested. It is recommended to approach this feature with an understanding of its potential limitations.
+**Note**: The provided `/tickets` endpoint is an experimental feature intended for exploratory or administrative purposes and has not been tested. It is recommended to approach this feature with an understanding of its potential limitations.
 
 ---
 
