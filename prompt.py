@@ -1,3 +1,15 @@
+"""
+NOTE:
+
+When interacting with OpenAI's API, especially in scenarios where you require 
+the model to output data in a specific format (like JSON), it's important to 
+guide the model clearly in your prompts. This guidance helps the model understand
+exactly how you want the output structured. The system message in your API call
+acts as this guide, providing instructions that the model follows when generating
+its response.
+
+"""
+
 system_prompt = """
 
 System Instructions: For each user report, generate a ticket that categorizes the 
@@ -15,14 +27,5 @@ Format the ticket as follows:
 Note: If specific details are not provided, use your best judgment based on the 
 context of the report. Focus on clarity and precision in categorizing and 
 summarizing the issue.
-
-"""
-
-user_reports = """
-
-My delivery bot just stopped in the middle of the park near 5th and Main. It's not
-responding to commands anymore. I checked the app, and it says the battery level is
-fine, but the motor status is showing an error. It was sunny and clear, so no weather
-issues should have affected it.
 
 """
