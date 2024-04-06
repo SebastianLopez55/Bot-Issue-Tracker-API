@@ -151,6 +151,49 @@ def test_get_ticket_status_failure(client):
 
 
 """
-TODO GET or POST Request test: track the status of the ticket
+PATCH Request test: track the status of the ticket.
 
 """
+
+
+def test_update_ticket_status_success(client):
+    # First, create a ticket
+    report_payload = {"user_report": "The bot is not responding to commands."}
+    create_response = client.post("/user_report", json=report_payload)
+    create_data = json.loads(create_response.data)
+    ticket_id = create_data["ticket_id"]
+
+    # Now, attempt to update the status of the created ticket
+    update_payload = {"new_status": "IN PROGRESS"}
+    update_response = client.patch(f"/ticket_status/{ticket_id}", json=update_payload)
+    update_data = json.loads(update_response.data)
+
+    assert update_response.status_code == 200
+    assert update_data["message"] == "Ticket status updated successfully."
+
+
+def test_update_ticket_status_invalid_status(client):
+    # Assuming there's at least one ticket created from previous tests
+    report_payload = {"user_report": "Another bot issue report."}
+    create_response = client.post("/user_report", json=report_payload)
+    create_data = json.loads(create_response.data)
+    ticket_id = create_data["ticket_id"]
+
+    update_payload = {"new_status": "INVALID_STATUS"}
+    response = client.patch(f"/ticket_status/{ticket_id}", json=update_payload)
+    data = json.loads(response.data)
+
+    assert response.status_code == 400
+    assert data["message"] == "Valid new status is required."
+
+
+def test_update_ticket_status_nonexistent(client):
+    nonexistent_ticket_id = "nonexistent123"
+    update_payload = {"new_status": "CLOSED"}
+    response = client.patch(
+        f"/ticket_status/{nonexistent_ticket_id}", json=update_payload
+    )
+    data = json.loads(response.data)
+
+    assert response.status_code == 404
+    assert data["message"] == "Ticket not found."
