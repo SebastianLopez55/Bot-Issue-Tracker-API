@@ -12,7 +12,7 @@ class SimulatedDatabase:
         self.heartbeats[heartbeat["bot_id"]] = heartbeat
 
     def get_heartbeat(self, bot_id):
-        return self.heartbeats.get(bot_id, "Bot not in database")
+        return self.heartbeats.get(bot_id, "Bot not in")
 
     def save_ticket(self, ticket):
         self.tickets[ticket.ticket_id] = ticket
