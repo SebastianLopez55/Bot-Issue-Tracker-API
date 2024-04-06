@@ -3,15 +3,15 @@
 
 ## Introduction
 
-This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging cutting-edge natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's real-time status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
+This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging cutting-edge natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
 
 ## Purpose
 
-The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with autonomous delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol for these advanced machines.
+The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol for these advanced machines.
 
 ## Technologies Used
 
-- **Python**: A versatile and powerful programming language used to develop the core logic of the API and process natural language inputs.
+- **Python**: High level programming language used to develop the core logic of the API and process natural language inputs.
 - **Flask**: A lightweight WSGI web application framework in Python, used to create the API endpoints and handle HTTP requests and responses.
 - **OpenAI's GPT**: Utilized for natural language processing to interpret the descriptions of issues reported by users and to assist in the automatic categorization of problems.
 - **pytest**: A framework for easily building simple and scalable test cases for the application's API endpoints.
