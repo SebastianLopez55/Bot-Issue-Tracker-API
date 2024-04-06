@@ -105,3 +105,13 @@ def create_ticket(user_report):
     database_sim.db_instance.save_ticket(ticket)
 
     return ticket
+
+
+def query_ticket_status(ticket_id):
+    ticket = database_sim.db_instance.get_ticket(ticket_id)
+    if ticket and ticket != "Ticket not in database.":
+        # Ticket found
+        return {"ticket_id": ticket.ticket_id, "ticket_status": ticket.ticket_status}
+    else:
+        # Ticket not found
+        return {"message": "Ticket not in database."}
