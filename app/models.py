@@ -1,41 +1,27 @@
 # Defines the data models of the application, representing the structure of database tables.
-from datetime import datetime
-
-
-class Heartbeat:
-    def __init__(
-        self,
-        bot_id,
-        location,
-        status,
-        battery_level,
-        software_version,
-        hardware_version,
-    ):
-        self.bot_id = bot_id
-        self.timestamp = datetime.now()
-        self.location = location
-        self.status = status
-        self.battery_level = battery_level
-        self.software_version = software_version
-        self.hardware_version = hardware_version
 
 
 class Ticket:
     def __init__(
         self,
         ticket_id,
-        problem_location,
+        ticket_status,
+        problem_description,
         problem_type,
-        summary,
-        bot_details,
         bot_id,
-        status="open",
+        bot_location,
+        bot_status,
+        bot_battery_level,
+        bot_software_version,
+        bot_hardware_version,
     ):
         self.ticket_id = ticket_id
-        self.problem_location = problem_location
+        self.ticket_status = ticket_status
+        self.problem_description = problem_description
         self.problem_type = problem_type
-        self.summary = summary
-        self.bot_details = bot_details
         self.bot_id = bot_id
-        self.status = status
+        self.bot_location = bot_location
+        self.bot_status = bot_status
+        self.bot_battery_level = bot_battery_level
+        self.bot_software_version = bot_software_version
+        self.bot_hardware_version = bot_hardware_version

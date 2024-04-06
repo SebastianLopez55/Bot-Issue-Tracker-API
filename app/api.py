@@ -1,5 +1,6 @@
 # Handles API-specific logic, managing data processing and responses for API requests.
 from dotenv import load_dotenv
+from database_sim import database_sim
 from flask import jsonify
 from .models import Ticket
 import json
@@ -60,16 +61,44 @@ def create_ticket(user_report):
         # Handle the error case, perhaps log the error, and return an appropriate response
         return {"error": "Failed to process report due to an error: " + report_details}
 
+    heartbeat_info_dict = database_sim.db_instance.get_heartbeat("bot_1")
+
+    # Ticket info
     ticket_id = str(uuid.uuid4())
-    problem_location = report_details.get("Location", "Unknown location")
+    ticket_status = "OPEN"
+    # OPENAI API info
+    problem_description = report_details.get("Description", "No description provided")
     problem_type = report_details.get("Problem Type", "Unknown type")
-    summary = report_details.get("Description", "No description provided")
-    bot_details = report_details.get("Bot Details", "No bot details provided")
-    bot_id = "PlaceholderBotID"
+    # Heartbeat info
+    bot_id = heartbeat_info_dict.get("bot_id", "Unknown bot ID")
+    bot_location = (
+        f" lat: {heartbeat_info_dict.get('location', {}).get('lat', 'Unknown')}, lon: {heartbeat_info_dict.get('location', {}).get('lon', 'Unknown')} "
+        if heartbeat_info_dict
+        else "Unknown"
+    )
+    bot_status = heartbeat_info_dict.get("status", "Unknown status")
+    bot_battery_level = heartbeat_info_dict.get(
+        "battery_level", "Unknown battery level"
+    )
+    bot_software_version = heartbeat_info_dict.get(
+        "software_version", "Unknown software version"
+    )
+    bot_hardware_version = heartbeat_info_dict.get(
+        "hardware_version", "Unknown hardware version"
+    )
 
     # Create a Ticket instance with the processed details
     ticket = Ticket(
-        ticket_id, problem_location, problem_type, summary, bot_details, bot_id
+        ticket_id,
+        ticket_status,
+        problem_description,
+        problem_type,
+        bot_id,
+        bot_location,
+        bot_status,
+        bot_battery_level,
+        bot_software_version,
+        bot_hardware_version,
     )
 
     # TODO Save ticket to database or in-memory data structure (not shown here)
