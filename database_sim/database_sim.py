@@ -12,13 +12,13 @@ class SimulatedDatabase:
         self.heartbeats[heartbeat["bot_id"]] = heartbeat
 
     def get_heartbeat(self, bot_id):
-        return self.heartbeats.get(bot_id, None)
+        return self.heartbeats.get(bot_id, "Bot not in database")
 
     def save_ticket(self, ticket):
         self.tickets[ticket.ticket_id] = ticket
 
     def get_ticket(self, ticket_id):
-        return self.tickets.get(ticket_id, None)
+        return self.tickets.get(ticket_id, "Ticket not in database.")
 
 
 # Initialize the simulated database instance

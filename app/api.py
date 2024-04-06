@@ -101,6 +101,7 @@ def create_ticket(user_report):
         bot_hardware_version,
     )
 
-    # TODO Save ticket to database or in-memory data structure (not shown here)
+    # Save ticket to  database
+    database_sim.db_instance.save_ticket(ticket)
 
     return ticket
