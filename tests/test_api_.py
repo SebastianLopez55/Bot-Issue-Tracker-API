@@ -16,6 +16,12 @@ def client():
         yield client
 
 
+"""
+POST Request test: receive report and output ticket
+
+"""
+
+
 def test_user_report_problem_type(client):
     """Test the /user_report endpoint for problem type correctness."""
     report_payload = {
@@ -104,3 +110,46 @@ def test_user_report_response_completeness(client):
     assert all(
         field in data for field in required_fields
     ), "All required fields must be present in the response."
+
+
+"""
+GET Request test: query the status of a ticket by its ID.
+
+"""
+
+
+def test_get_ticket_status_success(client):
+    """
+    Test that querying a ticket status by ID returns the correct status for an existing ticket.
+    """
+    # First, create a ticket to ensure there's at least one ticket in the database.
+    report_payload = {"user_report": "The bot failed to navigate to the destination."}
+    create_response = client.post("/user_report", json=report_payload)
+    create_data = json.loads(create_response.data)
+    ticket_id = create_data["ticket_id"]
+
+    # Now, attempt to retrieve the status of the created ticket.
+    get_response = client.get(f"/ticket_status/{ticket_id}")
+    get_data = json.loads(get_response.data)
+
+    assert get_response.status_code == 200
+    assert get_data["ticket_id"] == ticket_id
+    assert "ticket_status" in get_data
+
+
+def test_get_ticket_status_failure(client):
+    """
+    Test querying a ticket status by ID for a non-existent ticket returns the appropriate error response.
+    """
+    non_existent_ticket_id = "non-existent-id"
+    response = client.get(f"/ticket_status/{non_existent_ticket_id}")
+    data = json.loads(response.data)
+
+    assert response.status_code == 404
+    assert data["message"] == "Ticket not in database."
+
+
+"""
+TODO GET or POST Request test: track the status of the ticket
+
+"""
