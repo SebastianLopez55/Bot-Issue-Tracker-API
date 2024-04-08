@@ -83,6 +83,19 @@ To run this project on your local machine, follow these steps:
     pytest
     ```
 
+    If the command is not working you might need to adjust how Python interprets the structure of your project when running tests     with `pytest`.
+
+    Before running `pytest`, you can set the `PYTHONPATH` environment variable to include the root of your project. This tells Python where to look for modules. In your terminal, navigate to the root directory of your project and run:
+
+    
+    ```
+    export PYTHONPATH=$PYTHONPATH:$(pwd)
+    pytest
+    ```
+
+    This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
+
+    
 ---
 
 &nbsp;
