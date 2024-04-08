@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging cutting-edge natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
+This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
 
 ## Purpose
 
