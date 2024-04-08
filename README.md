@@ -65,7 +65,7 @@ To run this project on your local machine, follow these steps:
    Create a `.env` file in the project root directory and add the OpenAI API key:
 
    ```
-   OPENAI_API_KEY='your_openai_api_key_here'
+   OPENAI_API_KEY="your_openai_api_key_here"
    ```
 
 5. **Running the Application**
