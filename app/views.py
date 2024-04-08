@@ -13,14 +13,10 @@ def report_issue():
     data = request.json
     user_report = data.get("user_report")
     ticket = create_ticket(user_report)  # Call OpenAI API
-
-    return jsonify(ticket.__dict__), 200
-    # if "error" in ticket:
-    #     # If there's an error key in the ticket, it means processing failed
-    #     return jsonify({"error": ticket["error"]}), 400
-    # else:
-    #     # If processing was successful, return the ticket as is
-    #     return jsonify(ticket), 200
+    if isinstance(ticket, dict) and "error" in ticket:
+        return jsonify({"error": ticket["error"]}), 400
+    else:
+        return jsonify(ticket.__dict__), 200
 
 
 @main_blueprint.route("/ticket_status/<ticket_id>", methods=["GET"])
