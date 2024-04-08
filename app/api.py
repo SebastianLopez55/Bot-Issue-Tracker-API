@@ -9,27 +9,17 @@ import prompt
 import uuid
 import os
 
-
 # Load environment variables
 load_dotenv()
 
-# Retrieve and set the OpenAI API key
-api_key = os.getenv("OPENAI_API_KEY")
-
-if not api_key:
-    raise ValueError(
-        "API key not found. Ensure your .env file has the OPENAI_API_KEY variable."
-    )
-
-
 # Set OpenAI API key for use in API calls
-openai.api_key = api_key
+client = openai.OpenAI()
 
 
 def process_report(report):
     try:
         # Make the API call to OpenAI
-        completion = openai.chat.completions.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             response_format={"type": "json_object"},
             messages=[

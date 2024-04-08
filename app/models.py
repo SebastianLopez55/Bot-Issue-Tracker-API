@@ -1,4 +1,4 @@
-# Defines the data models of the application, representing the structure of database tables.
+# models.py defines the data models of the application, representing the structure of database tables.
 
 
 class Ticket:

@@ -1,4 +1,4 @@
-# Initializes the Flask application and sets up configurations and blueprints.
+# __init__.py initializes the Flask application and sets up configurations and blueprints.
 from flask import Flask
 from .views import main_blueprint
 
