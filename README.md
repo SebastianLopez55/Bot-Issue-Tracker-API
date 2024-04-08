@@ -8,6 +8,10 @@ This project provides a comprehensive solution for receiving, processing, and ma
 
 The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol.
 
+## API Documentation
+
+For more documentation of the Bot Issue Tracker API and an list of API endpoints, please visit our [API Documentation Wiki](https://github.com/SebastianLopez55/Bot-Issue-Tracker-API/wiki).
+
 ## Technologies Used
 
 - **Python**: High level programming language used to develop the core logic of the API and process natural language inputs.
@@ -92,5 +96,3 @@ To run this project on your local machine, follow these steps:
    ```
 
    This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
-
----
