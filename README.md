@@ -3,11 +3,11 @@
 
 ## Introduction
 
-This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging cutting-edge natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
+This project provides a comprehensive solution for receiving, processing, and managing reports of issues with delivery bots. By leveraging natural language processing techniques, the system efficiently categorizes each report into software, hardware, or field-related problems. It automatically generates a detailed ticket containing the problem's location, type, and a summary of the issue based on the user's description and the bot's status data. This documentation outlines the purpose, technologies used, and setup instructions for the project.
 
 ## Purpose
 
-The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol for these advanced machines.
+The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol.
 
 ## Technologies Used
 
@@ -35,7 +35,7 @@ To run this project on your local machine, follow these steps:
     To create a virtual environment, navigate to the project's root directory and run:
 
     ```
-    python -m venv .venv
+    python3 -m venv .venv
     ```
 
     Activate the virtual environment:
@@ -83,6 +83,19 @@ To run this project on your local machine, follow these steps:
     pytest
     ```
 
+    If the command is not working you might need to adjust how Python interprets the structure of your project when running tests     with `pytest`.
+
+    Before running `pytest`, you can set the `PYTHONPATH` environment variable to include the root of your project. This tells Python where to look for modules. In your terminal, navigate to the root directory of your project and run:
+
+    
+    ```
+    export PYTHONPATH=$PYTHONPATH:$(pwd)
+    pytest
+    ```
+
+    This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
+
+    
 ---
 
 &nbsp;
