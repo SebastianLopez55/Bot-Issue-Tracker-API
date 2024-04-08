@@ -35,7 +35,7 @@ To run this project on your local machine, follow these steps:
     To create a virtual environment, navigate to the project's root directory and run:
 
     ```
-    python -m venv .venv
+    python3 -m venv .venv
     ```
 
     Activate the virtual environment:
