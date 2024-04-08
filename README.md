@@ -93,4 +93,10 @@ To run this project on your local machine, follow these steps:
 
    This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
 
+
+   ## Documentation
+   
 ---
+
+For detailed documentation of the Bot Issue Tracker API, including setup, configuration, and API endpoints, please visit our [API Documentation Wiki](https://github.com/SebastianLopez55/Bot-Issue-Tracker-API/wiki).
+
