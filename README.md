@@ -8,9 +8,15 @@ This project provides a comprehensive solution for receiving, processing, and ma
 
 The Bot Issue Tracker API is designed to streamline the process of handling and tracking reports of operational issues with delivery bots. This system ensures that each problem is quickly identified, categorized, and documented, allowing for efficient resolution management. By automating the initial steps of the issue-reporting process, the API facilitates a more responsive and effective maintenance protocol.
 
+## API Demo Video
+
+For a demonstration of the API usage, please watch the [Bot Issue Tracker API Demo Video](https://www.loom.com/share/00264078fd074e4ca0f6f53537234b31?sid=f0a25c17-ae3f-468b-937d-d162a593b524).
+
+
 ## API Documentation
 
 For more documentation of the Bot Issue Tracker API and an list of API endpoints, please visit our [API Documentation Wiki](https://github.com/SebastianLopez55/Bot-Issue-Tracker-API/wiki).
+
 
 ## Technologies Used
 
