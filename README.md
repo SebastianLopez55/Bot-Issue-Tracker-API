@@ -1,4 +1,3 @@
-
 # Bot Issue Tracker API
 
 ## Introduction
@@ -22,209 +21,76 @@ To run this project on your local machine, follow these steps:
 
 1. **Clone the Repository**
 
-    Start by cloning this repository to your local machine. Use the following command:
+   Start by cloning this repository to your local machine. Use the following command:
 
-    ```
-    git clone <repository-url>
-    ```
+   ```
+   git clone <repository-url>
+   ```
 
 2. **Environment Setup**
 
-    Ensure that Python 3.8 or later is installed on your system. It's recommended to use a virtual environment for Python projects to manage dependencies efficiently.
+   Ensure that Python 3.8 or later is installed on your system. It's recommended to use a virtual environment for Python projects to manage dependencies efficiently.
 
-    To create a virtual environment, navigate to the project's root directory and run:
+   To create a virtual environment, navigate to the project's root directory and run:
 
-    ```
-    python3 -m venv .venv
-    ```
+   ```
+   python3 -m venv .venv
+   ```
 
-    Activate the virtual environment:
+   Activate the virtual environment:
 
-    - On Windows:
-        ```
-        .\.venv\Scripts\activate
-        ```
-    - On macOS/Linux:
-        ```
-        source .venv/bin/activate
-        ```
+   - On Windows:
+     ```
+     .\.venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```
+     source .venv/bin/activate
+     ```
 
 3. **Install Dependencies**
 
-    With the virtual environment activated, install the project dependencies using:
+   With the virtual environment activated, install the project dependencies using:
 
-    ```
-    pip install -r requirements.txt
-    ```
+   ```
+   pip install -r requirements.txt
+   ```
 
 4. **Environment Variables**
 
-    Create a `.env` file in the project root directory and add the OpenAI API key:
+   Create a `.env` file in the project root directory and add the OpenAI API key:
 
-    ```
-    OPENAI_API_KEY='your_openai_api_key_here'
-    ```
+   ```
+   OPENAI_API_KEY='your_openai_api_key_here'
+   ```
 
 5. **Running the Application**
 
-    To start the Flask application, execute:
+   To start the Flask application, execute:
 
-    ```
-    python run.py
-    ```
+   ```
+   python run.py
+   ```
 
-    The API is now running and accessible at `http://127.0.0.1:5000`.
+   The API is now running and accessible at `http://127.0.0.1:5000`.
 
 6. **Testing**
 
-    Run the tests to ensure everything is set up correctly:
+   Run the tests to ensure everything is set up correctly:
 
-    ```
-    pytest
-    ```
+   ```
+   pytest
+   ```
 
-    If the command is not working you might need to adjust how Python interprets the structure of your project when running tests     with `pytest`.
+   If the command is not working you might need to adjust how Python interprets the structure of your project when running tests with `pytest`.
 
-    Before running `pytest`, you can set the `PYTHONPATH` environment variable to include the root of your project. This tells Python where to look for modules. In your terminal, navigate to the root directory of your project and run:
+   Before running `pytest`, you can set the `PYTHONPATH` environment variable to include the root of your project. This tells Python where to look for modules. In your terminal, navigate to the root directory of your project and run:
 
-    
-    ```
-    export PYTHONPATH=$PYTHONPATH:$(pwd)
-    pytest
-    ```
+   ```
+   export PYTHONPATH=$PYTHONPATH:$(pwd)
+   pytest
+   ```
 
-    This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
-
-    
----
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-    
-
-## API Documentation
-
-This section outlines the available endpoints within the Bot Issue Tracker API, including their purpose and how to interact with them.
-
-### Endpoints
-
-#### 1. Report Issue
-
-- **Endpoint Name**: `/user_report`
-- **Method**: POST
-- **Description**: Receives reports about bot issues in natural language, processes the report to identify the problem's location, type, and a summary. It then creates a ticket with this information along with the bot's real-time data.
-- **Request Body**: JSON object containing the user's report.
-  - Example:
-    ```json
-    {
-      "user_report": "The bot stopped moving near the main square."
-    }
-    ```
-- **Response**: JSON object representing the created ticket, including the ticket ID, problem description, type, and bot details.
-  - Example:
-    ```json
-    {
-      "ticket_id": "123456",
-      "problem_description": "The bot stopped moving near the main square.",
-      "problem_type": "Hardware",
-      "bot_id": "bot_001",
-      "bot_location": "lat: 37.7749, lon: -122.4194",
-      "bot_status": "stopped",
-      "bot_battery_level": 72.5,
-      "bot_software_version": "v1.2.3",
-      "bot_hardware_version": "v1.0",
-      "ticket_status": "OPEN"
-    }
-    ```
-
-#### 2. Get Ticket Status
-
-- **Endpoint Name**: `/ticket_status/<ticket_id>`
-- **Method**: GET
-- **Description**: Retrieves the current status of a ticket given its ID.
-- **URL Parameter**: `ticket_id` - The unique identifier for the ticket whose status is being queried.
-- **Response**: JSON object with the ticket's current status.
-  - Example:
-    ```json
-    {
-      "ticket_id": "123456",
-      "ticket_status": "OPEN"
-    }
-    ```
-
-#### 3. Update Ticket Status
-
-- **Endpoint Name**: `/ticket_status/<ticket_id>`
-- **Method**: PATCH
-- **Description**: Updates the status of an existing ticket to reflect its current progress (e.g., from "OPEN" to "IN PROGRESS").
-- **URL Parameter**: `ticket_id` - The unique identifier for the ticket whose status is being updated.
-- **Request Body**: JSON object specifying the new status for the ticket.
-  - Example:
-    ```json
-    {
-      "new_status": "IN PROGRESS"
-    }
-    ```
-- **Response**: JSON object indicating the success of the operation.
-  - Example:
-    ```json
-    {
-      "message": "Ticket status updated successfully."
-    }
-    ```
-
-#### 4. Get All Tickets (Experimental)
-
-- **Endpoint Name**: `/tickets`
-- **Method**: GET
-- **Description**: Retrieves a list of all tickets in the database, including their details and status. While this endpoint serves as a convenient method for administrative overview, it is currently in an experimental stage and may not be fully tested.
-- **Response**: An array of JSON objects, each representing a ticket with comprehensive details.
-  - **Sample Response**:
-    ```json
-    [
-        {
-            "bot_battery_level": 35.5,
-            "bot_hardware_version": "1.0.0",
-            "bot_id": "f7fd06d4-841f-4b08-be49-7ada7ea9c793",
-            "bot_location": "lat: 37.7749, lon: -72.612",
-            "bot_software_version": "1.0.1",
-            "bot_status": "busy",
-            "problem_description": "Bot got stuck in mud.",
-            "problem_type": "Field",
-            "ticket_id": "aff0e6ba-f691-43bc-aa42-821fb6fdea14",
-            "ticket_status": "IN PROGRESS"
-        },
-        {
-            "bot_battery_level": 0.0,
-            "bot_hardware_version": "1.0.0",
-            "bot_id": "a6dfc6f2-4007-4b82-b1db-7dc301d2b4fc",
-            "bot_location": "lat: -12.7675, lon: -122.4194",
-            "bot_software_version": "1.0.1",
-            "bot_status": "unavailable",
-            "problem_description": "Bot battery drained completely.",
-            "problem_type": "Hardware",
-            "ticket_id": "08d46869-0188-42ef-a529-707bdbbfbb96",
-            "ticket_status": "CLOSED"
-        }
-    ]
-    ```
-
-**Note**: The provided `/tickets` endpoint is an experimental feature intended for exploratory or administrative purposes and has not been tested. It is recommended to approach this feature with an understanding of its potential limitations.
+   This command temporarily adds the current directory (`$(pwd)`) to the `PYTHONPATH`. It's a way to ensure that Python includes your project's directory when searching for modules.
 
 ---
-
-
-### Additional Notes
-
-- Ensure that the `Content-Type` header is set to `application/json` when sending requests to the API.
-- Replace placeholder values such as `<ticket_id>` with actual data relevant to your operation.
-- The response examples provided here are illustrative and may vary based on the actual data processed by the API.
-
----
-
